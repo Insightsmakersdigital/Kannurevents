@@ -281,12 +281,11 @@ const DetailedServicesPage = () => {
             Let our experienced team handle every detail while you focus on enjoying your special moment.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://wa.link/i72ail">
             <button className="bg-gradient-to-r from-purple-600 to-purple-800 text-white px-8 py-4 rounded-xl font-semibold hover:from-purple-700 hover:to-purple-900 transition-all duration-300 shadow-lg hover:shadow-xl">
-              Get Free Consultation
+              Contac Now
             </button>
-            <button className="border border-purple-400 text-purple-300 hover:text-white hover:border-white px-8 py-4 rounded-xl font-semibold transition-all duration-300">
-              View Our Portfolio
-            </button>
+            </a>
           </div>
         </div>
       </div>

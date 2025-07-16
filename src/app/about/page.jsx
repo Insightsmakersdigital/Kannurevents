@@ -255,7 +255,7 @@ const AboutUsSection = () => {
             <div className="relative">
               <div className="aspect-square bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl overflow-hidden">
                 <img
-                  src="/Images/image.png"
+                  src="/Images/image.jpg"
                   alt="Our team"
                   className="w-full h-full object-cover"
                 />
