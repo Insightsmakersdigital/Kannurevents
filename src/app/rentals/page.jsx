@@ -137,10 +137,9 @@ const RentalProductPage = () => {
         ref={imgRef}
         className="relative overflow-hidden h-72 bg-gray-100"
       >
-        {/* Loading skeleton */}
+        {/* Loading skeleton - simple pulse animation */}
         {!imageLoaded && !hasError && (
           <div className="absolute inset-0 bg-gradient-to-br from-gray-200 via-gray-100 to-gray-200 animate-pulse">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
           </div>
         )}
 
@@ -253,15 +252,6 @@ const RentalProductPage = () => {
 
       {/* Custom CSS */}
       <style jsx>{`
-        @keyframes shimmer {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
-        
-        .animate-shimmer {
-          animation: shimmer 1.5s infinite;
-        }
-
         html {
           scroll-behavior: smooth;
         }

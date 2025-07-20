@@ -314,13 +314,16 @@ const EventManagementServices = () => {
 
         {/* CTA Button */}
         <div className="text-center mt-16">
+          <a href="/services">
           <button className="
-            bg-indigo-600 text-white px-8 py-3 rounded-lg font-semibold
+            bg-violet-600 text-white px-8 py-3 rounded-lg font-semibold
             transition-all duration-300 ease-out
-            hover:bg-indigo-700 hover:shadow-lg
+            hover:bg-violet-700 hover:shadow-lg
           ">
             View All Services
           </button>
+          </a>
+          
         </div>
       </div>
     </section>

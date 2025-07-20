@@ -2,21 +2,21 @@
 export default function TestimonialsSection() {
   const testimonials = [
     {
-      name: "Sonkho & Mou",
-      location: "Bangalore, India",
-      content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only but also the leap into remaining essentially unchanged.",
+      name: "Naveena & Arjun ",
+      location: "Wedding Clients",
+      content: "Kannur Events was the best decision we made for our wedding. The decor was elegant, the planning was flawless, and the team handled everything so smoothly that we could actually enjoy our big day without stress. They truly turned our ideas into reality.",
       avatar: "https://via.placeholder.com/60x60/d1d5db/6b7280?text=SM"
     },
     {
-      name: "INVIXIUM", 
-      location: "Ahmedabad, Gujarat",
-      content: "We received great compliments for our annual 3 City Roadshow organized by Pegasus (such as 'the best roadshow ever') from our partners from South Africa. It was a pleasure to work with such a professional team, from the initial meeting right to the final event. We would recommend Pegasus highly and look forward to working with them again in the future.",
+      name: "Sreelatha Rajan ", 
+      location: "Birthday Event Client",
+      content: "We chose Kannur Events for my daughter’s 5th birthday party, and they exceeded our expectations. The entire setup was vibrant, fun, and well-organized. They were incredibly professional, yet warm and understanding of exactly what we needed.",
       logo: "X"
     },
     {
-      name: "Genelia",
-      location: "Bangalore, India", 
-      content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only but also the leap into remaining essentially unchanged.",
+      name: "Akhil Mohan",
+      location: "Engagement Event Client", 
+      content: "I had a very specific vision for our engagement, and Kannur Events nailed it. From lighting to floral arrangements, everything was on point. The team was responsive, creative, and made the whole process feel easy. Would definitely book them again.",
       avatar: "https://via.placeholder.com/60x60/d1d5db/6b7280?text=G"
     }
   ];

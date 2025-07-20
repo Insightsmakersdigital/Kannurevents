@@ -233,14 +233,16 @@ const AboutUsSection = () => {
                 Our Story
               </h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Founded in 2010 with a simple mission: to create extraordinary experiences that bring people together. 
-                What started as a small team of passionate event enthusiasts has grown into a full-service event company 
-                trusted by hundreds of clients across the region.
+              About Us – Kannur Events
+
+Established in 2024, Kannur Events is backed by 15 years of rich experience in the event management industry. Though newly founded, our legacy is built on years of dedication, creativity, and hands-on expertise in organizing events of all scales.
               </p>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                We believe that every event is an opportunity to create lasting memories. Whether it's a intimate wedding, 
-                a corporate milestone, or a grand celebration, we approach each project with the same dedication to excellence 
-                and attention to detail.
+              At Kannur Events, we offer comprehensive event solutions—from planning and coordination to execution. In addition to our core services, we provide a wide range of rental products essential for events, ensuring that every detail meets the highest standards of quality and aesthetics.
+
+We are also the proud creators of D-Hub, a sub-brand that brings fresh, innovative, and trend-forward ideas to life—helping transform ordinary events into extraordinary experiences.
+
+Whether it’s a personal celebration or a corporate function, Kannur Events is your trusted partner for creating memorable and seamless events, driven by professionalism and passion.
               </p>
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center">
