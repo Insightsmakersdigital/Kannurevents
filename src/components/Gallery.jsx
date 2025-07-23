@@ -7,12 +7,12 @@ const EventGallery = () => {
   const galleryImages = [
     {
       id: 1,
-      src: "/Images/image.jpg",
+      src: "/Images/Gallery.png",
       alt: "Event Image 1"
     },
     {
       id: 2,
-      src: "/Images/Banner.png",
+      src: "/Images/Gallery2.png",
       alt: "Event Image 2"
     },
     {
@@ -22,19 +22,19 @@ const EventGallery = () => {
     },
     {
       id: 4,
-      src: "/Images/Gallery2.png",
+      src: "/Images/Gallery3.png",
       alt: "Event Image 4"
     },
     
     
     {
       id: 7,
-      src: "/Images/Banner.png",
+      src: "/Images/Gallery4.png",
       alt: "Event Image 7"
     },
     {
       id: 8,
-      src: "/Images/Banner.png",
+      src: "/Images/Gallery5.png",
       alt: "Event Image 8"
     }
   ];
