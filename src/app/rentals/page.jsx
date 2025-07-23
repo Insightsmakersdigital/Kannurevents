@@ -2,9 +2,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 const RentalProductPage = () => {
-  const [visibleProducts, setVisibleProducts] = useState(8); // Start with 8 products
+  const [visibleProducts, setVisibleProducts] = useState(8);
   const [loading, setLoading] = useState(false);
   const [imageErrors, setImageErrors] = useState(new Set());
+  const [retryAttempts, setRetryAttempts] = useState(new Map());
   const observerRef = useRef(null);
 
   const products = [
@@ -71,7 +72,6 @@ const RentalProductPage = () => {
     if (loading || visibleProducts >= products.length) return;
     
     setLoading(true);
-    // Simulate loading delay
     setTimeout(() => {
       setVisibleProducts(prev => Math.min(prev + 8, products.length));
       setLoading(false);
@@ -98,6 +98,19 @@ const RentalProductPage = () => {
 
   const handleImageError = (productId) => {
     setImageErrors(prev => new Set([...prev, productId]));
+    console.log(`Image failed to load for product ${productId}: ${products.find(p => p.id === productId)?.image}`);
+  };
+
+  const retryImage = (productId) => {
+    const currentAttempts = retryAttempts.get(productId) || 0;
+    if (currentAttempts < 3) {
+      setRetryAttempts(prev => new Map([...prev, [productId, currentAttempts + 1]]));
+      setImageErrors(prev => {
+        const newSet = new Set([...prev]);
+        newSet.delete(productId);
+        return newSet;
+      });
+    }
   };
 
   const handleRental = (productId) => {
@@ -106,7 +119,7 @@ const RentalProductPage = () => {
     window.open(whatsappUrl, '_blank');
   };
 
-  // Optimized Image Component with lazy loading and error handling
+  // Optimized Image Component with simplified loading
   const OptimizedImage = ({ product, index }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
     const [imageInView, setImageInView] = useState(false);
@@ -131,29 +144,44 @@ const RentalProductPage = () => {
     }, []);
 
     const hasError = imageErrors.has(product.id);
+    const attempts = retryAttempts.get(product.id) || 0;
 
     return (
       <div
         ref={imgRef}
         className="relative overflow-hidden h-72 bg-gray-100"
       >
-        {/* Loading skeleton - simple pulse animation */}
-        {!imageLoaded && !hasError && (
+        {/* Loading skeleton - show only when image hasn't loaded and no error */}
+        {!imageLoaded && !hasError && imageInView && (
           <div className="absolute inset-0 bg-gradient-to-br from-gray-200 via-gray-100 to-gray-200 animate-pulse">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center">
+                <div className="w-8 h-8 border-2 border-purple-300 border-t-purple-600 rounded-full animate-spin mx-auto mb-2"></div>
+                <p className="text-xs text-gray-500">Loading...</p>
+              </div>
+            </div>
           </div>
         )}
 
-        {/* Error fallback */}
+        {/* Error fallback with retry option */}
         {hasError && (
           <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
-            <div className="text-center">
+            <div className="text-center p-4">
               <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full flex items-center justify-center">
                 <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
               </div>
-              <p className="text-sm text-purple-600 font-medium">Product #{product.id}</p>
-              <p className="text-xs text-gray-500">Preview Coming Soon</p>
+              <p className="text-sm text-purple-600 font-medium mb-2">Product #{product.id}</p>
+              <p className="text-xs text-gray-500 mb-3">Image not available</p>
+              {attempts < 3 && (
+                <button
+                  onClick={() => retryImage(product.id)}
+                  className="text-xs bg-purple-500 text-white px-3 py-1 rounded-full hover:bg-purple-600 transition-colors"
+                >
+                  Retry ({attempts}/3)
+                </button>
+              )}
             </div>
           </div>
         )}
@@ -167,13 +195,21 @@ const RentalProductPage = () => {
               imageLoaded ? 'opacity-100' : 'opacity-0'
             }`}
             loading="lazy"
-            onLoad={() => setImageLoaded(true)}
+            onLoad={() => {
+              setImageLoaded(true);
+              console.log(`Successfully loaded: ${product.image} for product ${product.id}`);
+            }}
             onError={() => handleImageError(product.id)}
           />
         )}
 
         {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-400"></div>
+
+        {/* Product Info */}
+        <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg px-2 py-1">
+          <span className="text-xs font-medium text-gray-700">#{product.id}</span>
+        </div>
 
         {/* Rental Button */}
         <div className="absolute bottom-4 left-4 right-4 flex justify-center">
@@ -206,6 +242,15 @@ const RentalProductPage = () => {
           <div className="mt-6 text-sm text-gray-500">
             Showing {visibleProducts} of {products.length} products
           </div>
+          
+          {/* Debug Info */}
+          {imageErrors.size > 0 && (
+            <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <p className="text-sm text-yellow-800">
+                {imageErrors.size} images failed to load. Check console for details.
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Products Grid */}
@@ -229,7 +274,7 @@ const RentalProductPage = () => {
           </div>
         )}
 
-        {/* Load more trigger (invisible) */}
+        {/* Load more trigger */}
         {visibleProducts < products.length && (
           <div ref={observerRef} className="h-20 flex items-center justify-center">
             <div className="text-gray-400">Scroll for more products</div>
