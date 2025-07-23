@@ -21,50 +21,50 @@ const RentalProductPage = () => {
     { id: 10, image: '/rentals/10.jpg' },
     { id: 11, image: '/rentals/11.jpg' },
     { id: 12, image: '/rentals/12.jpg' },
-    { id: 13, image: '/rentals/13.jpg' },
-    { id: 14, image: '/rentals/14.jpg' },
-    { id: 15, image: '/rentals/15.jpg' },
-    { id: 16, image: '/rentals/16.jpg' },
-    { id: 17, image: '/rentals/17.jpg' },
-    { id: 18, image: '/rentals/18.jpg' },
-    { id: 19, image: '/rentals/19.jpg' },
+    { id: 13, image: '/rentals/13.JPG' },
+    { id: 14, image: '/rentals/14.JPG' },
+    { id: 15, image: '/rentals/15.JPG' },
+    { id: 16, image: '/rentals/16.JPG' },
+    { id: 17, image: '/rentals/17.JPG' },
+    { id: 18, image: '/rentals/18.JPG' },
+    { id: 19, image: '/rentals/19.JPG' },
     { id: 20, image: '/rentals/20.png' },
     { id: 21, image: '/rentals/21.png' },
-    { id: 22, image: '/rentals/22.png' },
-    { id: 23, image: '/rentals/23.png' },
-    { id: 24, image: '/rentals/24.png' },
-    { id: 25, image: '/rentals/25.png' },
-    { id: 26, image: '/rentals/26.png' },
-    { id: 27, image: '/rentals/27.png' },
-    { id: 28, image: '/rentals/28.png' },
-    { id: 29, image: '/rentals/29.png' },
-    { id: 30, image: '/rentals/30.png' },
-    { id: 31, image: '/rentals/31.png' },
-    { id: 32, image: '/rentals/32.png' },
-    { id: 33, image: '/rentals/33.png' },
-    { id: 34, image: '/rentals/34.png' },
-    { id: 35, image: '/rentals/35.png' },
-    { id: 36, image: '/rentals/36.png' },
-    { id: 37, image: '/rentals/37.png' },
-    { id: 38, image: '/rentals/38.png' },
-    { id: 39, image: '/rentals/39.png' },
-    { id: 40, image: '/rentals/40.png' },
-    { id: 41, image: '/rentals/41.png' },
-    { id: 42, image: '/rentals/42.png' },
-    { id: 43, image: '/rentals/43.png' },
-    { id: 44, image: '/rentals/44.png' },
-    { id: 45, image: '/rentals/45.png' },
-    { id: 46, image: '/rentals/46.png' },
-    { id: 47, image: '/rentals/47.png' },
-    { id: 48, image: '/rentals/48.png' },
-    { id: 49, image: '/rentals/49.png' },
-    { id: 50, image: '/rentals/50.png' },
-    { id: 51, image: '/rentals/51.png' },
-    { id: 52, image: '/rentals/52.png' },
-    { id: 53, image: '/rentals/53.png' },
-    { id: 54, image: '/rentals/54.png' },
-    { id: 55, image: '/rentals/55.png' },
-    { id: 56, image: '/rentals/56.png' },
+    { id: 22, image: '/rentals/22.PNG' },
+    { id: 23, image: '/rentals/23.PNG' },
+    { id: 24, image: '/rentals/24.PNG' },
+    { id: 25, image: '/rentals/25.PNG' },
+    { id: 26, image: '/rentals/26.PNG' },
+    { id: 27, image: '/rentals/27.PNG' },
+    { id: 28, image: '/rentals/28.PNG' },
+    { id: 29, image: '/rentals/29.PNG' },
+    { id: 30, image: '/rentals/30.PNG' },
+    { id: 31, image: '/rentals/31.PNG' },
+    { id: 32, image: '/rentals/32.PNG' },
+    { id: 33, image: '/rentals/33.PNG' },
+    { id: 34, image: '/rentals/34.PNG' },
+    { id: 35, image: '/rentals/35.PNG' },
+    { id: 36, image: '/rentals/36.PNG' },
+    { id: 37, image: '/rentals/37.PNG' },
+    { id: 38, image: '/rentals/38.PNG' },
+    { id: 39, image: '/rentals/39.PNG' },
+    { id: 40, image: '/rentals/40.PNG' },
+    { id: 41, image: '/rentals/41.PNG' },
+    { id: 42, image: '/rentals/42.PNG' },
+    { id: 43, image: '/rentals/43.PNG' },
+    { id: 44, image: '/rentals/44.PNG' },
+    { id: 45, image: '/rentals/45.PNG' },
+    { id: 46, image: '/rentals/46.PNG' },
+    { id: 47, image: '/rentals/47.PNG' },
+    { id: 48, image: '/rentals/48.PNG' },
+    { id: 49, image: '/rentals/49.PNG' },
+    { id: 50, image: '/rentals/50.PNG' },
+    { id: 51, image: '/rentals/51.PNG' },
+    { id: 52, image: '/rentals/52.PNG' },
+    { id: 53, image: '/rentals/53.PNG' },
+    { id: 54, image: '/rentals/54.PNG' },
+    { id: 55, image: '/rentals/55.PNG' },
+    { id: 56, image: '/rentals/56.PNG' },
   ];
 
   // Load more products when user scrolls near bottom
@@ -119,11 +119,30 @@ const RentalProductPage = () => {
     window.open(whatsappUrl, '_blank');
   };
 
-  // Optimized Image Component with simplified loading
+  // Add fallback image sources for better compatibility
+  const getImageSources = (product) => {
+    const basePath = product.image.split('.')[0];
+    const originalExt = product.image.split('.').pop();
+    
+    // Try different case combinations
+    return [
+      product.image, // Original
+      `${basePath}.${originalExt.toUpperCase()}`, // Uppercase extension
+      `${basePath}.${originalExt.toLowerCase()}`, // Lowercase extension
+      `${basePath}.jpg`,
+      `${basePath}.JPG`,
+      `${basePath}.png`,
+      `${basePath}.PNG`,
+    ].filter((src, index, arr) => arr.indexOf(src) === index); // Remove duplicates
+  };
+
+  // Optimized Image Component with fallback sources
   const OptimizedImage = ({ product, index }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
     const [imageInView, setImageInView] = useState(false);
+    const [currentSrcIndex, setCurrentSrcIndex] = useState(0);
     const imgRef = useRef(null);
+    const imageSources = getImageSources(product);
 
     useEffect(() => {
       const observer = new IntersectionObserver(
@@ -145,6 +164,23 @@ const RentalProductPage = () => {
 
     const hasError = imageErrors.has(product.id);
     const attempts = retryAttempts.get(product.id) || 0;
+
+    const handleImageLoadError = () => {
+      const currentSrc = imageSources[currentSrcIndex];
+      console.log(`Failed to load: ${currentSrc} for product ${product.id}`);
+      
+      // Try next image source
+      if (currentSrcIndex < imageSources.length - 1) {
+        setCurrentSrcIndex(prev => prev + 1);
+        console.log(`Trying next source: ${imageSources[currentSrcIndex + 1]} for product ${product.id}`);
+      } else {
+        // All sources failed
+        console.log(`All sources failed for product ${product.id}. Tried:`, imageSources);
+        handleImageError(product.id);
+      }
+    };
+
+    const currentImageSrc = imageSources[currentSrcIndex];
 
     return (
       <div
@@ -186,10 +222,10 @@ const RentalProductPage = () => {
           </div>
         )}
 
-        {/* Actual image */}
+        {/* Actual image with fallback sources */}
         {imageInView && !hasError && (
           <img
-            src={product.image}
+            src={currentImageSrc}
             alt={`Product ${product.id}`}
             className={`w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 ${
               imageLoaded ? 'opacity-100' : 'opacity-0'
@@ -197,9 +233,9 @@ const RentalProductPage = () => {
             loading="lazy"
             onLoad={() => {
               setImageLoaded(true);
-              console.log(`Successfully loaded: ${product.image} for product ${product.id}`);
+              console.log(`Successfully loaded: ${currentImageSrc} for product ${product.id}`);
             }}
-            onError={() => handleImageError(product.id)}
+            onError={handleImageLoadError}
           />
         )}
 
@@ -243,14 +279,7 @@ const RentalProductPage = () => {
             Showing {visibleProducts} of {products.length} products
           </div>
           
-          {/* Debug Info */}
-          {imageErrors.size > 0 && (
-            <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-              <p className="text-sm text-yellow-800">
-                {imageErrors.size} images failed to load. Check console for details.
-              </p>
-            </div>
-          )}
+
         </div>
 
         {/* Products Grid */}
