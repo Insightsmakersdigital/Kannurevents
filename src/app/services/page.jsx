@@ -283,7 +283,7 @@ const DetailedServicesPage = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="https://wa.link/i72ail">
             <button className="bg-gradient-to-r from-purple-600 to-purple-800 text-white px-8 py-4 rounded-xl font-semibold hover:from-purple-700 hover:to-purple-900 transition-all duration-300 shadow-lg hover:shadow-xl">
-              Contac Now
+              Contact Now
             </button>
             </a>
           </div>

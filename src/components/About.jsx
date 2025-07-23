@@ -88,7 +88,7 @@ Whether it’s a personal celebration or a corporate function, Kannur Events is 
                   </svg>
                 </div>
                 <span className="text-gray-700 font-medium">
-                  Committed to Excellence Since 2010
+                  Committed to Excellence Since 2024
                 </span>
               </div>
             </div>

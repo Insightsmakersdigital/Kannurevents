@@ -65,12 +65,22 @@ const EventGallery = () => {
         
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Event Gallery
-          </h2>
-          <p className="text-gray-600 text-lg">
-            Capturing moments that matter
-          </p>
+        <div className="inline-block mb-6">
+              <div className="h-px w-24 bg-gradient-to-r from-transparent via-indigo-300 to-transparent mb-4"></div>
+              <span className="text-indigo-500 text-sm font-semibold tracking-widest uppercase">
+                Gallery
+              </span>
+              <div className="h-px w-24 bg-gradient-to-r from-transparent via-indigo-300 to-transparent mt-4"></div>
+            </div>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
+              <span className="bg-gradient-to-r from-gray-900 via-indigo-800 to-purple-800 bg-clip-text text-transparent inline-block animate-gradient">
+              Capturing moments 
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-purple-800 via-indigo-800 to-gray-900 bg-clip-text text-transparent inline-block animate-gradient">
+              that matter
+              </span>
+            </h1>
         </div>
 
         {/* 2-Row Bento Grid */}

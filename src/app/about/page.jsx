@@ -251,7 +251,7 @@ Whether it’s a personal celebration or a corporate function, Kannur Events is 
                     <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.51 0 2.93.37 4.18 1.02"/>
                   </svg>
                 </div>
-                <span className="text-gray-700 font-medium">Committed to Excellence Since 2010</span>
+                <span className="text-gray-700 font-medium">Committed to Excellence Since 2024</span>
               </div>
             </div>
             <div className="relative">
