@@ -5,7 +5,6 @@ const RentalProductPage = () => {
   const [visibleProducts, setVisibleProducts] = useState(8);
   const [loading, setLoading] = useState(false);
   const [imageErrors, setImageErrors] = useState(new Set());
-  const [retryAttempts, setRetryAttempts] = useState(new Map());
   const observerRef = useRef(null);
 
   const products = [
@@ -101,18 +100,6 @@ const RentalProductPage = () => {
     console.log(`Image failed to load for product ${productId}: ${products.find(p => p.id === productId)?.image}`);
   };
 
-  const retryImage = (productId) => {
-    const currentAttempts = retryAttempts.get(productId) || 0;
-    if (currentAttempts < 3) {
-      setRetryAttempts(prev => new Map([...prev, [productId, currentAttempts + 1]]));
-      setImageErrors(prev => {
-        const newSet = new Set([...prev]);
-        newSet.delete(productId);
-        return newSet;
-      });
-    }
-  };
-
   const handleRental = (productId) => {
     const message = encodeURIComponent(`Hi! I'm interested in renting product ID: ${productId}`);
     const whatsappUrl = `https://wa.link/i72ail?text=${message}`;
@@ -163,7 +150,6 @@ const RentalProductPage = () => {
     }, []);
 
     const hasError = imageErrors.has(product.id);
-    const attempts = retryAttempts.get(product.id) || 0;
 
     const handleImageLoadError = () => {
       const currentSrc = imageSources[currentSrcIndex];
@@ -185,7 +171,7 @@ const RentalProductPage = () => {
     return (
       <div
         ref={imgRef}
-        className="relative overflow-hidden h-72 bg-gray-100"
+        className="relative overflow-hidden h-48 sm:h-56 md:h-64 lg:h-72 bg-gray-100"
       >
         {/* Loading skeleton - show only when image hasn't loaded and no error */}
         {!imageLoaded && !hasError && imageInView && (
@@ -242,16 +228,11 @@ const RentalProductPage = () => {
         {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-400"></div>
 
-        {/* Product Info */}
-        <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg px-2 py-1">
-          <span className="text-xs font-medium text-gray-700">#{product.id}</span>
-        </div>
-
         {/* Rental Button */}
-        <div className="absolute bottom-4 left-4 right-4 flex justify-center">
+        <div className="absolute bottom-2 sm:bottom-3 md:bottom-4 left-2 sm:left-3 md:left-4 right-2 sm:right-3 md:right-4 flex justify-center">
           <button
             onClick={() => handleRental(product.id)}
-            className="relative overflow-hidden px-6 py-2 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-400 ease-out group/btn backdrop-blur-sm"
+            className="relative overflow-hidden px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 text-white font-semibold rounded-md sm:rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-400 ease-out group/btn backdrop-blur-sm text-xs sm:text-sm"
             style={{ backgroundColor: 'rgba(27, 0, 52, 0.9)' }}
           >
             <span className="relative z-10 transition-all duration-300">
@@ -266,7 +247,7 @@ const RentalProductPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-white py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 mt-16 sm:mt-20">
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
@@ -283,7 +264,7 @@ const RentalProductPage = () => {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
           {products.slice(0, visibleProducts).map((product, index) => (
             <div
               key={product.id}
