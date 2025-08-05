@@ -139,11 +139,7 @@ const AboutUsSection = () => {
           <div className="text-center">
             <div className="mb-4 flex justify-center">
               <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-purple-600">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                <circle cx="9" cy="7" r="4"/>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
               </svg>
             </div>
             <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
@@ -188,11 +184,8 @@ const AboutUsSection = () => {
           <div className="text-center">
             <div className="mb-4 flex justify-center">
               <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-purple-600">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                <circle cx="9" cy="7" r="4"/>
-                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                <path d="M12 2l1.09 3.26L18 5.27l-2.5 2.43L16.18 12 12 9.77 7.82 12l.68-4.3L6 5.27l4.91-.01L12 2z"/>
+                <circle cx="12" cy="8" r="6"/>
+                <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
               </svg>
             </div>
             <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
@@ -242,7 +235,7 @@ Established in 2024, Kannur Events is backed by 15 years of rich experience in t
 
 We are also the proud creators of D-Hub, a sub-brand that brings fresh, innovative, and trend-forward ideas to life—helping transform ordinary events into extraordinary experiences.
 
-Whether it’s a personal celebration or a corporate function, Kannur Events is your trusted partner for creating memorable and seamless events, driven by professionalism and passion.
+Whether it's a personal celebration or a corporate function, Kannur Events is your trusted partner for creating memorable and seamless events, driven by professionalism and passion.
               </p>
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center">
